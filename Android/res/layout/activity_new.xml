@@ -1,0 +1,125 @@
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <EditText
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:hint="@string/srss"
+        android:maxLines="2" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/mic_btn" />
+
+    <LinearLayout
+        android:id="@+id/is_auto_stop_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:text="@string/is_autostop"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/group_isautostop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/auto_stop_true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:button="@drawable/radio_button_bg"
+                android:checked="true"
+                android:paddingBottom="3dp"
+                android:paddingLeft="18dp"
+                android:paddingTop="3dp"
+                android:text="@string/positive" />
+
+            <RadioButton
+                android:id="@+id/auto_stop_false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_button_bg"
+                android:paddingBottom="3dp"
+                android:paddingLeft="18dp"
+                android:paddingTop="3dp"
+                android:text="@string/negative" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/is_continuous_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/is_auto_stop_panel"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="@string/is_continuous"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/group_iscontinuous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >            
+
+            
+            
+            <RadioButton
+                android:id="@+id/continuous_true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:button="@drawable/radio_button_bg"
+                android:checked="true"
+                android:paddingBottom="3dp"
+                android:paddingLeft="18dp"
+                android:paddingTop="3dp"
+                android:text="@string/positive" />
+            
+            <RadioButton
+                android:id="@+id/continuous_false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/radio_button_bg"
+                android:checked="false"
+                android:paddingBottom="3dp"
+                android:paddingLeft="18dp"
+                android:paddingTop="3dp"
+                android:text="@string/negative" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+</RelativeLayout>

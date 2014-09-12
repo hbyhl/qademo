@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean name="PropertyPlaceholderConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="properties" ref="appConfiguration" />
+	</bean>
+
+
+	<bean id="appConfiguration" class="cn.focus.qademo.util.ConfigBean">
+		<property name="configurations">
+			<list>
+
+				<!-- 本地测试配置文件 -->
+				<bean class="org.apache.commons.configuration.XMLConfiguration">
+					<constructor-arg index="0" type="java.net.URL"
+						value="classpath:config/local.app.config.xml" />
+				</bean>
+
+				<!-- 测试环境配置文件 -->
+				<bean class="org.apache.commons.configuration.XMLConfiguration">
+					<constructor-arg index="0" type="java.net.URL"
+						value="classpath:config/test.app.config.xml" />
+				</bean>
+
+				<!-- SCE测试环境配置文件 -->
+				<bean class="org.apache.commons.configuration.XMLConfiguration">
+					<constructor-arg index="0" type="java.net.URL"
+						value="classpath:config/test_sce.app.config.xml" />
+				</bean>
+
+				<!-- 生产环境配置文件 -->
+				<bean class="org.apache.commons.configuration.XMLConfiguration">
+					<constructor-arg index="0" type="java.net.URL"
+						value="classpath:config/product.app.config.xml" />
+				</bean>
+
+			</list>
+
+		</property>
+
+	</bean>
+
+
+</beans>

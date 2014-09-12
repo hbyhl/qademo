@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<param value="System.out" name="Target" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[framework] %d - %c -%-4r [%t] %-5p %c %l - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="file" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="Append" value="true" />
+		<!--<param name="File" value="${LOG_FILE}" />-->
+		<param name="File" value="/opt/jetty_dev/logs/focus_message.log" />
+		<param name="DatePattern" value="'.'_yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[framework] %d - %c -%-4r [%t] %-5p %c %l - %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="net.paoding.rose" additivity="false">
+		<level value="debug" />
+        <appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework" additivity="false">
+		<level value="error" />
+	</logger>
+	<logger name="cn.focus" additivity="false">
+		<level value="info" />
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</logger>
+	<logger name="com.sohu" additivity="false">
+		<level value="error" />
+	</logger>
+	<logger name="net.paoding.rose.controllers.ToolsController"
+		additivity="false">
+		<level value="debug" />
+	</logger>
+	<root>
+		<level value="info" />
+		<appender-ref ref="console" />
+		<appender-ref ref="file" />
+	</root>
+</log4j:configuration>

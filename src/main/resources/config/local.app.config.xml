@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appconfig>
+
+	<!-- IP过滤,多个IP用，连接 -->
+	<innerCallerIpPrefix>*</innerCallerIpPrefix>
+	
+</appconfig>

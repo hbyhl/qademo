@@ -1,0 +1,54 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 本机测试环境 156测试环境数据源配置 和 SCE测试环境数据源配置 -->
+	<beans profile="local,test_sce,test">
+		<bean id="jade.dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+			destroy-method="close">
+			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<property name="url"
+				value="jdbc:mysql://10.10.90.156:3306/app_xinfang?useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true&amp;zeroDateTimeBehavior=convertToNull" />
+			<property name="username" value="develop" />
+			<property name="password" value="p3m12d" />
+			<property name="maxActive" value="20" />
+			<property name="maxIdle" value="10" />
+			<property name="maxWait" value="1000" />
+			<property name="testOnBorrow" value="true" />
+			<property name="testWhileIdle" value="true" />
+			<property name="removeAbandoned" value="true" />
+			<property name="removeAbandonedTimeout" value="1000" />
+			<property name="validationQuery" value="select 1" />
+			<property name="poolPreparedStatements" value="true" />
+			<property name="defaultAutoCommit" value="true" />
+		</bean>
+
+	</beans>
+
+	<!-- SCE正式环境  -->
+	<beans profile="product">
+		<bean id="jade.dataSource.focus_user_center"
+			class="net.paoding.rose.jade.dataaccess.datasource.MasterSlaveDataSourceFactory">
+			<constructor-arg index="0">
+				<ref local="focus_user_center_dc_master" />
+			</constructor-arg>
+			<constructor-arg index="1">
+				<list>
+					<ref local="focus_user_center_dc_slave" />
+				</list>
+			</constructor-arg>
+			<constructor-arg index="2" value="false" />
+		</bean>
+
+		<bean id="focus_user_center_dc_master" class="org.springframework.jndi.JndiObjectFactoryBean">
+			<property name="jndiName" value="java:comp/env/jdbc/focus_user_center" />
+		</bean>
+		<bean id="focus_user_center_dc_slave" class="org.springframework.jndi.JndiObjectFactoryBean">
+			<property name="jndiName" value="java:comp/env/jdbc/focus_user_center_r" />
+		</bean>
+	</beans>
+
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">搜狗语音识别</string>
+    <string name="title_activity_main">搜狗语音识别</string>
+    <string name="srss">识别结果展示</string>
+    <string name="is_continuous">连续语音识别</string>
+    <string name="is_autostop">自动停止录音</string>
+    <string name="positive">是</string>
+    <string name="negative">否</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
